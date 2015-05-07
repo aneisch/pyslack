@@ -83,6 +83,20 @@ class SlackClient(object):
             'text': text,
         })
         return self._make_request(method, params)
+        
+    def chat_post_attachment(self, channel, text, **params):
+        """chat.postMessage
+
+        This method posts a message to a channel.
+
+        https://api.slack.com/methods/chat.postMessage
+        """
+        method = 'chat.postMessage'
+        params.update({
+            'channel': channel,
+            'attachments': text,
+        })
+        return self._make_request(method, params)
 
     def chat_update_message(self, channel, text, timestamp, **params):
         """chat.update
